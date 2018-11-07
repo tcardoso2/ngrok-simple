@@ -1,0 +1,22 @@
+{
+  "name": "ngrok-simple",
+  "version": "0.1.0",
+  "description": "A very simple library which runs ngrok as a user would, backwards compatible with older versions of node (e.g. no async and others)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tcardoso2/ngrok-simple.git"
+  },
+  "keywords": [
+    "ngrok"
+  ],
+  "author": "Tiago Cardoso <tcardoso@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tcardoso2/ngrok-simple/issues"
+  },
+  "homepage": "https://github.com/tcardoso2/ngrok-simple#readme"
+}
