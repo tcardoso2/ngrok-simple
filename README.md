@@ -30,4 +30,5 @@ run:
 mocha
 ````
 
+v 0.2: Implemented start, kill and get pid from api;  
 v 0.1: Initial tests for checking that ngrok is installed and to get the tunnels information (WIP);  
