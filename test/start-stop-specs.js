@@ -69,7 +69,7 @@ describe("Start/Stop ngrok,", function() {
       isNaN(pid).should.equal(false);      
     });
   });
-  xit('1.7 kill running process via api', function (done) {
+  it('1.7 kill running process via api', function (done) {
     ns.kill((err) => {
       console.log(`1.7 Process id killed ${!err}`);
       err.should.equal(false);
@@ -80,8 +80,9 @@ describe("Start/Stop ngrok,", function() {
 
 describe("Inspect,", function() {
   it('get tunnels XML from localhost:4040', function (done) {
-    this.timeout(5000);
+    this.timeout(6000);
     ns.start((pid) => {
+      console.log("Starting ngrok...");
       setTimeout(() => {
         chai.request('localhost:4040')
           .get('/api/tunnels')
@@ -93,10 +94,10 @@ describe("Inspect,", function() {
             res.body.tunnels[0].public_url.should.contain('ngrok.io');        
             done();
         });        
-      }, 3000);
+      }, 5000);
     });
   });
-  xit('get url', function (done) {
+  xit('get url via api', function (done) {
     ns.tunnels(0).public_url;
     should.fail();
   });
