@@ -9,9 +9,10 @@ let ns = require('ngrok-simple');
 ns.start(); 	//Starts http tunnel on port 80
 ns.start(8080);	//Starts http tunnel on port 8080
 ns.kill();		//Kills any ngrok instance running (via actual kill command)
-ns.tunnels()	//Returns the tunnels
-ns.tunnels(0)	//Returns the first tunnel (0-index based)
-ns.tunnels(0).public_url	//Returns the first tunnel public url
+ns.tunnels(0, callback)	//Returns the first tunnel (0-index based), via callback function
+ns.tunnels(0, (err, tunnel) => {
+	console.log(tunnel.public_url);
+}).	//Returns the first tunnel public url via callback
 ````
 
 ## Testing
@@ -20,6 +21,7 @@ run:
 mocha
 ````
 
+v 0.4: Correction of README;  
 v 0.3: Implemented getting public url and tunnels from api;  
 v 0.2: Implemented start, kill and get pid from api;  
 v 0.1: Initial tests for checking that ngrok is installed and to get the tunnels information (WIP);  
