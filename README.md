@@ -1,5 +1,5 @@
 # ngrok-simple
-A very simple library which runs ngrok as a user would and allows inspecting tunnels, backwards compatible with older versions of node (e.g. no async, no promises and others).
+A very simple library which runs ngrok as a user would and allows inspecting tunnels, backwards compatible with older versions of node (e.g. no async, no promises and others). Only depends on npm package request;  
 If you require just bare bones to run quickly without all the complications of ngrok npm package and no dependencies on later versions of node, then this could be a good choice for you, that was the reason why I created this
 It requires ngrok to be installed and up and running (see [https://ngrok.com])   
 
@@ -12,16 +12,6 @@ ns.kill();		//Kills any ngrok instance running (via actual kill command)
 ns.tunnels()	//Returns the tunnels
 ns.tunnels(0)	//Returns the first tunnel (0-index based)
 ns.tunnels(0).public_url	//Returns the first tunnel public url
-
-//Subscribe to events triggered whenever ngrok starts / ends - old school events
-
-ns.on('start', (tunnels) => {
-  //Your function here
-})
-
-ns.on('kill', (pid) => {
-  //Your function here
-})
 ````
 
 ## Testing
