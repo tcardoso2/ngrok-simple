@@ -95,7 +95,7 @@ describe("Inspect,", function() {
             done();
         });        
       }, 5000);
-    });
+    }, 'http', 8088);
   });
   it('get url via api', function (done) {
     ns.tunnels(0, (err, result) => {

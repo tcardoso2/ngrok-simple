@@ -7,7 +7,7 @@ let request = require('request');
 function pid(callback) {
   exec('pgrep ngrok', (err, stdout, stderr) => {
   	let first = stdout.split('\n')[0];
-  	console.log(`pid: stdout is ${stdout}, first line is "${first}"`);
+  	//console.log(`pid: stdout is ${stdout}, first line is "${first}"`);
     if (err || isNaN(first)) {
       callback(null);
       return;
@@ -16,8 +16,8 @@ function pid(callback) {
   });
 }
 
-function start(callback) {
-  spawn('ngrok', ['http', '8088']);
+function start(callback, type = 'http', port = '80') {
+  spawn('ngrok', [type, port]);
   pid(callback);
 }
 
