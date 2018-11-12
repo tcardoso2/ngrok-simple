@@ -91,23 +91,18 @@ describe("Inspect,", function() {
             (err == null).should.equal(true);
             res.should.have.status(200);
             res.body.tunnels[0].config.addr.should.equal('localhost:8088');
-            res.body.tunnels[0].public_url.should.contain('ngrok.io');        
+            res.body.tunnels[0].public_url.should.contain('ngrok.io');
             done();
         });        
       }, 5000);
     });
   });
-  xit('get url via api', function (done) {
-    ns.tunnels(0).public_url;
-    should.fail();
-  });
-});
-
-describe("Subscribe to event,", function() {
-  xit('Receive on start event', function (done) {
-    
-  });
-  xit('Receive on end event', function (done) {
-
+  it('get url via api', function (done) {
+    ns.tunnels(0, (err, result) => {
+      (err == null).should.equal(true);
+      console.log(result);
+      result.public_url.should.contain('ngrok.io');
+      done();
+    });
   });
 });

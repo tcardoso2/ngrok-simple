@@ -2,6 +2,7 @@
 
 const { exec } = require('child_process');
 const { spawn } = require('child_process');
+let request = require('request');
 
 function pid(callback) {
   exec('pgrep ngrok', (err, stdout, stderr) => {
@@ -34,6 +35,19 @@ function kill(callback) {
   });
 }
 
+function tunnels(id, callback) {
+  request('http://localhost:4040/api/tunnels', function (error, response, body) {
+    console.log('error:', error);
+    console.log('statusCode:', response && response.statusCode);
+    body = JSON.parse(body);
+    let result = body ? (body.tunnels ? body.tunnels[id] : null) : null;
+    if (callback){
+      callback(error, result);
+    }
+  });
+}
+
 exports.pid = pid;
 exports.start = start;
 exports.kill = kill;
+exports.tunnels = tunnels;
