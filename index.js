@@ -16,7 +16,7 @@ function pid(callback) {
   });
 }
 
-function start(callback, type = 'http', port = '80') {
+function start(callback = (pid) => {}, type = 'http', port = '80') {
   spawn('ngrok', [type, port]);
   pid(callback);
 }
@@ -36,15 +36,20 @@ function kill(callback) {
 }
 
 function tunnels(id, callback) {
-  request('http://localhost:4040/api/tunnels', function (error, response, body) {
-    console.log('error:', error);
-    console.log('statusCode:', response && response.statusCode);
-    body = JSON.parse(body);
-    let result = body ? (body.tunnels ? body.tunnels[id] : null) : null;
-    if (callback){
-      callback(error, result);
-    }
-  });
+  try{
+    request('http://localhost:4040/api/tunnels', function (error, response, body) {
+      console.log('error:', error);
+      console.log('statusCode:', response && response.statusCode);
+      console.log(`nr. of tunnels: ${body.tunnels ? body.tunnels.length : 'error'}`);
+      body = JSON.parse(body);
+      let result = body ? (body.tunnels ? body.tunnels[id] : null) : null;
+      if (callback){
+        callback(error, result);
+      }
+    });    
+  } catch(e) {
+    callback(e.message, e);
+  }
 }
 
 exports.pid = pid;
