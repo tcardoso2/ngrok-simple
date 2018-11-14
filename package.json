@@ -1,6 +1,6 @@
 {
   "name": "ngrok-simple",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A very simple library which runs ngrok as a user would, backwards compatible with older versions of node (e.g. no async and others)",
   "main": "index.js",
   "scripts": {

@@ -21,6 +21,7 @@ run:
 mocha
 ````
 
+v 0.7: Bug fixes;  
 v 0.6: Added some error handling on the request start function (if port 4040 is not up);  
 v 0.5: Updated to allow overriding type (http, tcp) and port (defaults to 8088);  
 v 0.4: Correction of README;  

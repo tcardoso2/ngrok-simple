@@ -40,8 +40,8 @@ function tunnels(id, callback) {
     request('http://localhost:4040/api/tunnels', function (error, response, body) {
       console.log('error:', error);
       console.log('statusCode:', response && response.statusCode);
-      console.log(`nr. of tunnels: ${body.tunnels ? body.tunnels.length : 'error'}`);
       body = JSON.parse(body);
+      console.log(`nr. of tunnels: ${body && body.tunnels ? body.tunnels.length : 'error'}`);
       let result = body ? (body.tunnels ? body.tunnels[id] : null) : null;
       if (callback){
         callback(error, result);

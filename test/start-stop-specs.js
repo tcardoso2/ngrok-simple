@@ -102,7 +102,12 @@ describe("Inspect,", function() {
       (err == null).should.equal(true);
       console.log(result);
       result.public_url.should.contain('ngrok.io');
+      
       done();
     });
   });
+});
+
+describe("Make sure in the end we kill existing processes", function(){
+  ns.kill();
 });
